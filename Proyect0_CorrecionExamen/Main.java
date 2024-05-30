@@ -26,10 +26,5 @@ public class Main {
         hotelNulo1.imprimirHotel();
         hotelNulo2.imprimirHotel();
 
-        // Modificar todos los atributos de al menos tres objetos con valor nulo y mostrar su nuevo valor
-        hotelNulo1.modificarHotel("Royer", "El quinche", "333333333");
-        hotelNulo2.modificarHotel("Luz marina", "La gasca", "444444444");
-        hotelNulo1.imprimirHotel();
-        hotelNulo2.imprimirHotel();
     }
 }
