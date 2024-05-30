@@ -1,5 +1,6 @@
 package Proyect0_CorrecionExamen;
 
+//examen corregido - hacer commits
 public class Hoteles {
     // Atributos
     private String nombre;
