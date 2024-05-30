@@ -27,5 +27,6 @@ public class Main {
         hotelNulo2.imprimirHotel();
 
         System.out.println("Hola , se agrega este comentario");
+        System.out.println("hi, este es un mensaje desde el repositorio remoto");
     }
 }
