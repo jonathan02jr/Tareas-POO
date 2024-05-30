@@ -26,5 +26,6 @@ public class Main {
         hotelNulo1.imprimirHotel();
         hotelNulo2.imprimirHotel();
 
+        System.out.println("Hola , se agrega este comentario");
     }
 }
