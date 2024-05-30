@@ -1,8 +1,7 @@
 package Proyect0_CorrecionExamen;
 
 //examen corregido-hacer commits
-//hola
-//este es un comentario escrito desde el repositorio remoto
+//este es un comentario escrito desde repositorio remoto
 public class Hoteles {
     // Atributos
     private String nombre;
