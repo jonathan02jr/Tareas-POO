@@ -1,4 +1,4 @@
-package Proyect0_CorrecionExamen;
+package B1_Proyect0_CorrecionExamen;
 
 //examen corregido-hacer commits
 //hola
