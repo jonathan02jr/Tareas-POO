@@ -31,18 +31,21 @@ public class Login_Admi extends JFrame {
                     String contrasena = new String(contra_admi.getPassword());
 
                     // Usar una consulta preparada para evitar SQL Injection
-                    String query = "SELECT * FROM usuarioAdministrador WHERE correo = ? AND codigo = ?";
-                    PreparedStatement preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, usuario);
-                    preparedStatement.setString(2, contrasena);
+                    String sql = "SELECT * FROM acceso WHERE usuario= ? AND password = ?";
+                    PreparedStatement pst = connection.prepareStatement(sql);
+                    pst.setString(1, usuario);
+                    pst.setString(2, contrasena);
 
-                    ResultSet resultSet = preparedStatement.executeQuery();
+                    ResultSet resultSet = pst.executeQuery();
 
                     if(resultSet.next()){
                         System.out.println("Inicio exitosoo");
                         JOptionPane.showMessageDialog(panel1,"Inicio exitoso", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                        usuario_admi.setText("");
-                        contra_admi.setText("");
+
+                        //se dirije al menu
+                        Menu_Admi menu = new Menu_Admi();
+                        menu.iniciar();
+                        dispose();
                     }
                     else{
                         System.out.println("Usuario o contrasela incorrectos. Intente de nuevo");
@@ -57,5 +60,11 @@ public class Login_Admi extends JFrame {
 
             }
         });
+    }
+    public void iniciar(){
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setSize(600,500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
