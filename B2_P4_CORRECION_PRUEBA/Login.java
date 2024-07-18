@@ -21,9 +21,9 @@ public class Login extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String url = "jdbc:mysql://localhost:3306/sistema_hospitalario";
-                String user = "root";
-                String password = "";
+                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
+                String user = "uceiprz5lnyxwcun";
+                String password = "2MEuIBNxrt0DUkvVbQaE";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
@@ -32,7 +32,7 @@ public class Login extends JFrame{
                     String contrasenia0 = new String(contrasenia1.getPassword());
 
                     // Consulta de la base de datos
-                    String sql = "select * from usuario where username=? and password =?";
+                    String sql = "select * from acceso where usuario=? and password =?";
                     PreparedStatement pst = conecta.prepareStatement(sql);
                     pst.setString(1, usuario0);
                     pst.setString(2, contrasenia0);

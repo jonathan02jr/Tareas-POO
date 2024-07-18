@@ -1,17 +1,17 @@
-package B2_P4_CORRECION_PRUEBA;
+package B2_P5_CONEC_NUBE;
+
+import B2_P4_CORRECION_PRUEBA.Login;
+import B2_P4_CORRECION_PRUEBA.Menu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class Actualizar extends JFrame{
+public class Actualizar1 extends JFrame{
     private JPanel panel6;
     private JTextField nombre1;
     private JTextField apellido1;
-    private JTextField edad1;
-    private JTextField telefono1;
-    private JTextField descripcion1;
     private JTextField cedu1_actualizar;
     private JButton volverButton;
     private JButton salirButton;
@@ -19,7 +19,7 @@ public class Actualizar extends JFrame{
     private JButton mostrarButton;
 
 
-    public Actualizar() {
+    public Actualizar1() {
         super("Actualizar Datos");
         setContentPane(panel6);
 
@@ -27,28 +27,23 @@ public class Actualizar extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
-                String user = "uceiprz5lnyxwcun";
-                String password = "2MEuIBNxrt0DUkvVbQaE";
+                String url = "jdbc:mysql://u2qpn7yz95j6wbhy:b4dtcv5rsu8iwiir6knr-mysql.services.clever-cloud.com:3306/b4dtcv5rsu8iwiir6knr";
+                String user = "u2qpn7yz95j6wbhy";
+                String password = "pLrGc4nM66TVKiQzS34d";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
 
-                    String cedu0_actualizar = cedu1_actualizar.getText();
+                    String cod0_actualizar = cedu1_actualizar.getText();
                     String nombre0 = nombre1.getText();
                     String apellido0 = apellido1.getText();
-                    String edad0 = edad1.getText();
-                    String telefono0 = telefono1.getText();
-                    String descripcion0 = descripcion1.getText();
 
-                    String sql = "UPDATE PACIENTE SET nombre = ?, apellido = ?, edad = ?, telefono = ?, descripcion_enfermedad = ? WHERE cedula = ?";
+
+                    String sql = "UPDATE registroj SET nombre = ?, apellido = ? WHERE codigo = ?";
                     PreparedStatement pst = conecta.prepareStatement(sql);
                     pst.setString(1,nombre0);
                     pst.setString(2,apellido0);
-                    pst.setInt(3,Integer.parseInt(edad0));
-                    pst.setString(4,telefono0);
-                    pst.setString(5,descripcion0);
-                    pst.setString(6, cedu0_actualizar);
+                    pst.setString(3, cod0_actualizar);
 
 
                     int afectar_filas = pst.executeUpdate();
@@ -59,10 +54,6 @@ public class Actualizar extends JFrame{
 
                         nombre1.setText("");
                         apellido1.setText("");
-                        telefono1.setText("");
-                        edad1.setText("");
-                        descripcion1.setText("");
-
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Fallo la actualizacion","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -95,29 +86,27 @@ public class Actualizar extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
 
-                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
-                String user = "uceiprz5lnyxwcun";
-                String password = "2MEuIBNxrt0DUkvVbQaE";
+                String url = "jdbc:mysql://u2qpn7yz95j6wbhy:b4dtcv5rsu8iwiir6knr-mysql.services.clever-cloud.com:3306/b4dtcv5rsu8iwiir6knr";
+                String user = "u2qpn7yz95j6wbhy";
+                String password = "pLrGc4nM66TVKiQzS34d";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
 
-                    String cedula0_mostrar = cedu1_actualizar.getText();
+                    String cod0_mostrar = cedu1_actualizar.getText();
 
-                    String sql = "select * from PACIENTE where cedula=?";
+                    String sql = "select * from registroj where codigo=?";
                     PreparedStatement pst = conecta.prepareStatement(sql);
-                    pst.setString(1, cedula0_mostrar);
+                    pst.setString(1, cod0_mostrar);
                     ResultSet rs = pst.executeQuery();
 
                     if (rs.next()){
-                        System.out.println("Paciente Encontrado");
-                        JOptionPane.showMessageDialog(null,"Paciente Encontrado", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                        System.out.println("Registro Encontrado");
+                        JOptionPane.showMessageDialog(null,"Registro Encontrado", "Exito", JOptionPane.INFORMATION_MESSAGE);
 
                         nombre1.setText(rs.getString("nombre"));
                         apellido1.setText(rs.getString("apellido"));
-                        edad1.setText(rs.getString("edad"));
-                        telefono1.setText(rs.getString("telefono"));
-                        descripcion1.setText(rs.getString("descripcion_enfermedad"));
+
                     }
                     else{
                         System.out.println("No se encontraron registros");

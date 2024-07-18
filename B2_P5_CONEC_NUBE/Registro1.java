@@ -1,4 +1,4 @@
-package B2_P4_CORRECION_PRUEBA;
+package B2_P5_CONEC_NUBE;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,64 +8,45 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Registro extends JFrame{
+public class Registro1 extends JFrame{
     private JPanel panel2;
-    private JTextField historial1;
     private JTextField nombre1;
     private JTextField apellido1;
-    private JTextField telefono1;
-    private JTextField edad1;
     private JButton guardar_info;
-    private JTextField descripcion1;
-    private JTextField cedula1;
+    private JTextField codigo1;
     private JButton volverButton;
 
-    public Registro(){
+    public Registro1(){
         super("Registro");
         setContentPane(panel2);
-
 
         guardar_info.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
-                String user = "uceiprz5lnyxwcun";
-                String password = "2MEuIBNxrt0DUkvVbQaE";
+                String url = "jdbc:mysql://u2qpn7yz95j6wbhy:b4dtcv5rsu8iwiir6knr-mysql.services.clever-cloud.com:3306/b4dtcv5rsu8iwiir6knr";
+                String user = "u2qpn7yz95j6wbhy";
+                String password = "pLrGc4nM66TVKiQzS34d";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
 
-                    String cedula0 = cedula1.getText();
-                    String historial0 = historial1.getText();
+                    String codigo0 = codigo1.getText();
                     String nombre0 = nombre1.getText();
                     String apellido0 = apellido1.getText();
-                    String telefono0 = telefono1.getText();
-                    String edad0 = edad1.getText();
-                    String descripcion0 = descripcion1.getText();
 
-                    String sql = "insert into PACIENTE(cedula, n_historial_clinico,nombre,apellido,telefono,edad,descripcion_enfermedad) values(?,?,?,?,?,?,?)";
+                    String sql = "insert into registroj(codigo,nombre,apellido) values(?,?,?)";
 
                     PreparedStatement pst = conecta.prepareStatement(sql);
-                    pst.setInt(1,Integer.parseInt(cedula0));
-                    pst.setString(2,historial0);
-                    pst.setString(3,nombre0);
-                    pst.setString(4,apellido0);
-                    pst.setInt(5,Integer.parseInt(telefono0));
-                    pst.setInt(6,Integer.parseInt(edad0));
-                    pst.setString(7,descripcion0);
+                    pst.setInt(1,Integer.parseInt(codigo0));
+                    pst.setString(2,nombre0);
+                    pst.setString(3,apellido0);
 
                     int afectar_filas = pst.executeUpdate();
                     if (afectar_filas > 0){
                         JOptionPane.showMessageDialog(null,"REGISTRO INSERTADO CORRECTAMENTE","ÉXITO",JOptionPane.INFORMATION_MESSAGE);
-
-                        cedula1.setText("");
-                        historial1.setText("");
+                        codigo1.setText("");
                         nombre1.setText("");
                         apellido1.setText("");
-                        telefono1.setText("");
-                        edad1.setText("");
-                        descripcion1.setText("");
-
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"FALLO LA INSERCION DE DATOS","ERROR",JOptionPane.ERROR_MESSAGE);

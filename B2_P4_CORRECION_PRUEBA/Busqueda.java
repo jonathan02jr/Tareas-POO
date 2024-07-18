@@ -21,9 +21,9 @@ public class Busqueda extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String url = "jdbc:mysql://localhost:3306/sistema_hospitalario";
-                String user = "root";
-                String password = "";
+                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
+                String user = "uceiprz5lnyxwcun";
+                String password = "2MEuIBNxrt0DUkvVbQaE";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
@@ -31,7 +31,7 @@ public class Busqueda extends JFrame{
                     String cedula_buscar0 = cedula1_busca.getText();
 
                     // Consulta de la base de datos
-                    String sql = "select * from paciente where cedula=?";
+                    String sql = "select * from PACIENTE where cedula=?";
                     PreparedStatement pst = conecta.prepareStatement(sql);
                     pst.setString(1, cedula_buscar0);
                     ResultSet rs = pst.executeQuery();
