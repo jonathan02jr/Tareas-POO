@@ -2,8 +2,8 @@ package B2_P4_CORRECION_PRUEBA;
 
 public class Main {
     public static void main(String[] args){
-//        Login entrar = new Login();
-//        entrar.iniciar();
+        Login entrar = new Login();
+        entrar.iniciar();
 
 //        Busqueda ola = new Busqueda();
 //        ola.iniciar();
