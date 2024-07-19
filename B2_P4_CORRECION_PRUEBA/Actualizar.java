@@ -27,9 +27,9 @@ public class Actualizar extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
-                String user = "uceiprz5lnyxwcun";
-                String password = "2MEuIBNxrt0DUkvVbQaE";
+                String url = "jdbc:mysql://localhost:3306/sistema_hospitalario";
+                String user = "root";
+                String password = "";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
@@ -41,7 +41,7 @@ public class Actualizar extends JFrame{
                     String telefono0 = telefono1.getText();
                     String descripcion0 = descripcion1.getText();
 
-                    String sql = "UPDATE PACIENTE SET nombre = ?, apellido = ?, edad = ?, telefono = ?, descripcion_enfermedad = ? WHERE cedula = ?";
+                    String sql = "UPDATE paciente SET nombre = ?, apellido = ?, edad = ?, telefono = ?, descripcion_enfermedad = ? WHERE cedula = ?";
                     PreparedStatement pst = conecta.prepareStatement(sql);
                     pst.setString(1,nombre0);
                     pst.setString(2,apellido0);
@@ -95,16 +95,16 @@ public class Actualizar extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
 
-                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
-                String user = "uceiprz5lnyxwcun";
-                String password = "2MEuIBNxrt0DUkvVbQaE";
+                String url = "jdbc:mysql://localhost:3306/sistema_hospitalario";
+                String user = "root";
+                String password = "";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
 
                     String cedula0_mostrar = cedu1_actualizar.getText();
 
-                    String sql = "select * from PACIENTE where cedula=?";
+                    String sql = "select * from paciente where cedula=?";
                     PreparedStatement pst = conecta.prepareStatement(sql);
                     pst.setString(1, cedula0_mostrar);
                     ResultSet rs = pst.executeQuery();

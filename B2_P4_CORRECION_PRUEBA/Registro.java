@@ -28,9 +28,9 @@ public class Registro extends JFrame{
         guardar_info.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = "jdbc:mysql://uceiprz5lnyxwcun:2MEuIBNxrt0DUkvVbQaE@bi7ej80dgemnxzfdcj4h-mysql.services.clever-cloud.com:3306/bi7ej80dgemnxzfdcj4h";
-                String user = "uceiprz5lnyxwcun";
-                String password = "2MEuIBNxrt0DUkvVbQaE";
+                String url = "jdbc:mysql://localhost:3306/sistema_hospitalario";
+                String user = "root";
+                String password = "";
 
                 try (Connection conecta = DriverManager.getConnection(url,user,password)){
                     System.out.println("Conectado a la base de datos");
@@ -43,7 +43,7 @@ public class Registro extends JFrame{
                     String edad0 = edad1.getText();
                     String descripcion0 = descripcion1.getText();
 
-                    String sql = "insert into PACIENTE(cedula, n_historial_clinico,nombre,apellido,telefono,edad,descripcion_enfermedad) values(?,?,?,?,?,?,?)";
+                    String sql = "insert into paciente(cedula, n_historial_clinico,nombre,apellido,telefono,edad,descripcion_enfermedad) values(?,?,?,?,?,?,?)";
 
                     PreparedStatement pst = conecta.prepareStatement(sql);
                     pst.setInt(1,Integer.parseInt(cedula0));
